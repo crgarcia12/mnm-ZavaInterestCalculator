@@ -106,5 +106,29 @@
       },
       "storyPoint": 5
     }
-  ]
+  ],
+  "rules": {},
+  "projects": [
+    {
+      "properties": {
+        "appName": "ZavaInterestCalculator",
+        "repo": "ZavaInterestCalculator",
+        "languages": [
+          "Java"
+        ],
+        "frameworks": [
+          "Java EE / Jakarta EE",
+          "JDBC"
+        ],
+        "tools": [
+          "Gradle"
+        ],
+        "jdkVersion": "1.8",
+        "applicationType": "Web Application",
+        "description": "Interest calculation service for ZavaBank using Java Servlets and SQL Server"
+      },
+      "incidents": []
+    }
+  ],
+  "rearchitect": []
 }
