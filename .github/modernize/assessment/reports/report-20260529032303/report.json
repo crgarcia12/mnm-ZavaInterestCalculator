@@ -1,0 +1,63 @@
+{
+  "SchemaVersion": "1.0",
+  "Metadata": {
+    "Tool": {
+      "Name": "AppCAT for Java",
+      "Version": "Java appmod 0.0.0"
+    },
+    "AnalysisStartedAt": "2026-05-29T03:23:03Z",
+    "Source": {
+      "Name": "Application source",
+      "Kind": "Folder",
+      "Location": "/tmp/workspace/crgarcia12/mnm-ZavaInterestCalculator"
+    },
+    "Target": {
+      "Name": "Any",
+      "Kind": "Container",
+      "Location": null
+    }
+  },
+  "Issues": [
+    {
+      "Category": "Embedded language not recognized",
+      "Description": "The text/javascript language in src/main/webapp/WEB-INF/views/calculator.jsp was not recognized by AppCAT for Java.",
+      "Impact": "Low",
+      "Effort": 0,
+      "Instances": [
+        {
+          "SourcePath": "src/main/webapp/WEB-INF/views/calculator.jsp",
+          "LineNumber": 3,
+          "Variables": [
+            {
+              "Name": "languageName",
+              "Value": "text/javascript"
+            }
+          ]
+        }
+      ],
+      "IssueCode": "F001"
+    }
+  ],
+  "Summary": {
+    "CloudReadiness": {
+      "Readiness": null,
+      "ReadinessScore": 100,
+      "ReadinessClassification": "Excellent",
+      "Summary": {
+        "TotalIssueCount": 1,
+        "CriticalIssueCount": 0,
+        "HighIssueCount": 0,
+        "MediumIssueCount": 0,
+        "LowIssueCount": 1,
+        "InfoIssueCount": 0
+      }
+    },
+    "IssueSummary": [
+      {
+        "Category": "Embedded language not recognized",
+        "IssueCount": 1,
+        "Impact": "Low"
+      }
+    ]
+  }
+}
