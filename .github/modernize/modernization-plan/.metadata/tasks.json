@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Tasks template for modernization plan. Generate this file alongside plan.md to track individual migration tasks.",
+  "tasks": [
+    {
+      "type": "security",
+      "id": "001-security-cve-remediation",
+      "description": "Scan and remediate dependency CVEs before Azure deployment.",
+      "reason": "Security remediation is required in every modernization plan to reduce risk before production deployment.",
+      "requirements": "Scan all project dependencies for known CVEs and remediate vulnerabilities by upgrading to patched versions. If remediation requires major-version upgrades, document upgrade risk and breaking-change impact. Verify the project build and tests after remediation.",
+      "successCriteria": {
+        "passBuild": "true",
+        "generateNewUnitTests": "false",
+        "passUnitTests": "true"
+      }
+    },
+    {
+      "type": "deployment",
+      "id": "002-deployment-azure-container-apps",
+      "description": "Deploy the modernized Java application to Azure Container Apps.",
+      "reason": "The modernization objective is to run the application on Azure using a repeatable deployment flow.",
+      "requirements": "Containerize the application as needed and deploy to Azure Container Apps using existing or newly provisioned Azure resources. Use Managed Identity for Azure authentication where applicable.",
+      "dependencies": [
+        "001-security-cve-remediation"
+      ],
+      "targetAzureService": "Azure Container Apps",
+      "resourceStatus": "will create new service",
+      "deploymentTool": "bicep",
+      "skills": [
+        {
+          "name": "azcli-containerapp-deploy",
+          "location": "builtin"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "planName": "modernization-plan",
+    "projectName": "mnm-ZavaInterestCalculator",
+    "language": "java",
+    "createdAt": "2026-05-29T00:58:18Z",
+    "version": "1.0"
+  }
+}
