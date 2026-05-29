@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "id": "20260529040339",
+    "analysisStartTime": "2026-05-29T04:03:39.0000000Z",
+    "generated_at": "2026-05-29T04:03:39.0000000Z",
+    "generator": "local-best-effort-assessment",
+    "note": "AppCAT MCP tools were unavailable in this environment; this report was synthesized from repository analysis and required assessment skill outputs."
+  },
+  "rules": {
+    "java-8-runtime": {
+      "title": "Java 8 runtime target requires modernization planning",
+      "severity": "mandatory",
+      "effort": 5,
+      "labels": [
+        "domain=java-upgrade"
+      ]
+    },
+    "servlet-war-packaging": {
+      "title": "Servlet WAR packaging depends on an external Tomcat container",
+      "severity": "potential",
+      "effort": 3,
+      "labels": [
+        "domain=cloud-readiness"
+      ]
+    },
+    "startup-ddl-bootstrap": {
+      "title": "Schema bootstrap is embedded in servlet startup logic",
+      "severity": "potential",
+      "effort": 2,
+      "labels": [
+        "domain=cloud-readiness"
+      ]
+    },
+    "sqlserver-tight-coupling": {
+      "title": "Application logic is tightly coupled to SQL Server tables and JDBC connectivity",
+      "severity": "potential",
+      "effort": 3,
+      "labels": [
+        "domain=cloud-readiness"
+      ]
+    }
+  },
+  "projects": [
+    {
+      "name": "ZavaInterestCalculator",
+      "properties": {
+        "repo": "mnm-ZavaInterestCalculator",
+        "appName": "ZavaInterestCalculator",
+        "languages": [
+          "Java"
+        ],
+        "frameworks": [
+          "Java Servlet 3.1",
+          "JSP",
+          "Tomcat 9"
+        ],
+        "tools": [
+          "Gradle",
+          "Docker"
+        ],
+        "jdkVersion": "1.8",
+        "description": "WAR application that calculates and accrues interest for bank accounts backed by SQL Server.",
+        "applicationType": "Web App",
+        "tags": [
+          "war",
+          "servlet",
+          "sqlserver"
+        ],
+        "linesOfCode": 246
+      },
+      "incidents": [
+        {
+          "ruleId": "java-8-runtime",
+          "location": "build.gradle",
+          "line": 7,
+          "targets": {
+            "aks": {
+              "effort": 5
+            }
+          }
+        },
+        {
+          "ruleId": "servlet-war-packaging",
+          "location": "src/main/webapp/WEB-INF/web.xml",
+          "line": 1,
+          "targets": {
+            "aks": {
+              "effort": 3
+            }
+          }
+        },
+        {
+          "ruleId": "startup-ddl-bootstrap",
+          "location": "src/main/java/com/zavabank/interestcalculator/InterestBootstrapServlet.java",
+          "line": 11,
+          "targets": {
+            "aks": {
+              "effort": 2
+            }
+          }
+        },
+        {
+          "ruleId": "sqlserver-tight-coupling",
+          "location": "src/main/java/com/zavabank/interestcalculator/InterestConnectionFactory.java",
+          "line": 20,
+          "targets": {
+            "aks": {
+              "effort": 3
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

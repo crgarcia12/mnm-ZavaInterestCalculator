@@ -1,0 +1,76 @@
+{
+  "GeneratedAt": "2026-05-29T04:05:55.0000000Z",
+  "ProjectPath": ".",
+  "Summary": {
+    "TotalFindings": 4,
+    "CveCount": 2,
+    "CweCount": 2,
+    "BySeverity": {
+      "mandatory": 2,
+      "optional": 2,
+      "potential": 0
+    },
+    "ByCategory": {
+      "CVE": 2,
+      "Credentials & Secrets": 2
+    },
+    "TotalRulesAssessed": 59,
+    "RulesPassed": 57
+  },
+  "CveFindings": [
+    {
+      "Id": "CVE-2023-5072",
+      "Name": "Java: DoS Vulnerability in JSON-JAVA",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2023-5072](https://github.com/advisories/GHSA-4jq9-2xhw-jpx7): Java: DoS Vulnerability in JSON-JAVA\n\nSeverity: HIGH\n\nAffected dependencies:\n  - org.json:json:20140107 (declared at build.gradle:17)\n\nRecommended fix:\n  - Upgrade to 20231013 or later",
+      "Files": [
+        "build.gradle:17"
+      ],
+      "Explanation": "[CVE-2023-5072](https://github.com/advisories/GHSA-4jq9-2xhw-jpx7): Java: DoS Vulnerability in JSON-JAVA\n\nSeverity: HIGH\n\nAffected dependencies:\n  - org.json:json:20140107 (declared at build.gradle:17)\n\nRecommended fix:\n  - Upgrade to 20231013 or later"
+    },
+    {
+      "Id": "CVE-2022-45688",
+      "Name": "json stack overflow vulnerability",
+      "Category": "CVE",
+      "Severity": "mandatory",
+      "StoryPoint": 1,
+      "Description": "[CVE-2022-45688](https://github.com/advisories/GHSA-3vqj-43w4-2q58): json stack overflow vulnerability\n\nSeverity: HIGH\n\nAffected dependencies:\n  - org.json:json:20140107 (declared at build.gradle:17)\n\nRecommended fix:\n  - Upgrade to 20230227 or later",
+      "Files": [
+        "build.gradle:17"
+      ],
+      "Explanation": "[CVE-2022-45688](https://github.com/advisories/GHSA-3vqj-43w4-2q58): json stack overflow vulnerability\n\nSeverity: HIGH\n\nAffected dependencies:\n  - org.json:json:20140107 (declared at build.gradle:17)\n\nRecommended fix:\n  - Upgrade to 20230227 or later"
+    }
+  ],
+  "CweFindings": [
+    {
+      "Id": "CWE-259",
+      "Name": "Use of Hard-coded Password",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "Files": [
+        "Dockerfile:11",
+        "src/main/resources/interest.properties:5",
+        "bin/main/interest.properties:5"
+      ],
+      "Explanation": "Hard-coded database passwords are committed in Docker and properties configuration. The values appear in `Dockerfile` line 11 and `interest.properties` line 5, and `InterestConfig.getDbPassword()` loads them for outbound SQL Server connectivity."
+    },
+    {
+      "Id": "CWE-798",
+      "Name": "Use of Hard-coded Credentials",
+      "Category": "Credentials & Secrets",
+      "Severity": "optional",
+      "StoryPoint": 5,
+      "Description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+      "Files": [
+        "Dockerfile:10-11",
+        "src/main/resources/interest.properties:4-5",
+        "bin/main/interest.properties:4-5"
+      ],
+      "Explanation": "Hard-coded database credentials are committed in both the Docker environment and the properties file. `InterestConfig` consumes `DB_USER` and `DB_PASSWORD` / `db.user` and `db.password` for direct SQL Server authentication."
+    }
+  ]
+}
